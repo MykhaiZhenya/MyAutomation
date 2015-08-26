@@ -30,7 +30,7 @@ public class VacationsTest extends BaseTest {
     public void testCheckHowManyVacationsAvailableNow() {
         // Test data
         String login = "imy";
-        String password = "5IJzWNRz";
+        String password = "***";
         int expectedVacationDays = 4;
 
         // Test steps
@@ -51,7 +51,7 @@ public class VacationsTest extends BaseTest {
     public void testChecksThatNumberOfVacationsInFutureChanged() {
         // Test data
         String login = "imy";
-        String password = "5IJzWNRz";
+        String password = "***";
         int expectedVacationDays = 4;
 
         // Test steps

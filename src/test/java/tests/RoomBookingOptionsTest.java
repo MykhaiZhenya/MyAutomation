@@ -34,7 +34,7 @@ public class RoomBookingOptionsTest extends BaseTest {
     public void testChecksThatRoomForSelectedLocationIsPresented() {
         //Test data
         String login = "imy";
-        String password = "5IJzWNRz";
+        String password = "***";
         String expectedItem = "CPH Video Conference Room";
 
 
@@ -58,7 +58,7 @@ public class RoomBookingOptionsTest extends BaseTest {
     public void testChecksThatDatePickerIsPresented() {
         //Test data
         String login = "imy";
-        String password = "5IJzWNRz";
+        String password = "***";
 
         //Test steps
         LoginPage loginPage = new LoginPage();
@@ -79,7 +79,7 @@ public class RoomBookingOptionsTest extends BaseTest {
     public void testChecksCancelBooking() {
         //Test data
         String login = "imy";
-        String password = "5IJzWNRz";
+        String password = "***";
 
         //Test steps
         LoginPage loginPage = new LoginPage();
