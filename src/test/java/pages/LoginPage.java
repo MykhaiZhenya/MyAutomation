@@ -9,9 +9,9 @@ import org.openqa.selenium.WebDriver;
  */
 public class LoginPage extends BasePage {
 
-    public LoginPage() {
-        waitPageLoaded(Locators.LOGIN_FIELD, 5, "Login BasePage");
-    }
+//    public LoginPage() {
+//        waitPageLoaded(Locators.LOGIN_FIELD, 5, "Login BasePage");
+//    }
 
     public void inputLogin(String login) {
         inputText(Locators.LOGIN_FIELD, login);
