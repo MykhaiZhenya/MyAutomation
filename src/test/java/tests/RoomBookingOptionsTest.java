@@ -3,10 +3,11 @@ package tests;
 import core.BaseTest;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 import pages.booking.elements.DatePicker;
 import pages.booking.form.NewBooking;
 
-import org.junit.Test;
+
 
 import pages.*;
 
@@ -20,7 +21,7 @@ import static junit.framework.Assert.assertTrue;
 public class RoomBookingOptionsTest extends BaseTest {
 
     @BeforeClass
-    public void setUpClass () {
+    public void setUpClass() {
         openBrowser();
         openPage("http://level2.ciklum.net/index.php");
     }
@@ -30,7 +31,7 @@ public class RoomBookingOptionsTest extends BaseTest {
         closeBrowser();
     }
 
-    @Test
+    @Test(priority=1, enabled = true)
     public void testChecksThatRoomForSelectedLocationIsPresented() {
         //Test data
         String login = "imy";
@@ -54,7 +55,6 @@ public class RoomBookingOptionsTest extends BaseTest {
 
 
     @Test
-
     public void testChecksThatDatePickerIsPresented() {
         //Test data
         String login = "imy";
@@ -71,11 +71,11 @@ public class RoomBookingOptionsTest extends BaseTest {
 
 
         //Assertion
-        assertEquals("August", NewBooking.openDatePicker());
+        assertEquals("August", NewBooking.openDatePicker()); //rename method, e.g. getMonthName
 
     }
 
-        @Test
+    @Test
     public void testChecksCancelBooking() {
         //Test data
         String login = "imy";

@@ -1,12 +1,19 @@
 package tests;
 
+import core.BasePage;
 import core.BaseTest;
+import jdk.internal.org.xml.sax.Locator;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.LoginPage;
 import pages.MainPage;
 import pages.SickDaysAndVacationsPage;
+
+import java.util.concurrent.TimeUnit;
+
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.internal.junit.ArrayAsserts.assertArrayEquals;
 
@@ -16,7 +23,7 @@ import static org.testng.internal.junit.ArrayAsserts.assertArrayEquals;
 public class VacationsTest extends BaseTest {
 
     @BeforeClass
-    public void setUpClass () {
+    public void setUpClass() {
         openBrowser();
         openPage("http://level2.ciklum.net/index.php");
     }
@@ -30,8 +37,8 @@ public class VacationsTest extends BaseTest {
     public void testCheckHowManyVacationsAvailableNow() {
         // Test data
         String login = "imy";
-        String password = "***";
-        int expectedVacationDays = 4;
+        String password = "5IJzWNRz";
+        int expectedVacationDays = 7;
 
         // Test steps
         LoginPage loginPage = new LoginPage();
@@ -39,11 +46,14 @@ public class VacationsTest extends BaseTest {
         loginPage.inputPassword(password);
         MainPage mainPage;
         mainPage = loginPage.clickSubmit();
-        SickDaysAndVacationsPage sickDaysAndVacationsPage;
-        sickDaysAndVacationsPage = mainPage.clickSickDaysAndVacations();
+//        MainPage.sleep(1000);
+        mainPage.navigateToPage("Sick Days & Vacations");
+        SickDaysAndVacationsPage vacationsDays = new SickDaysAndVacationsPage();
+        /*SickDaysAndVacationsPage sickDaysAndVacationsPage;
+        sickDaysAndVacationsPage = mainPage.clickSickDaysAndVacations();*/
 
         // Assertion
-        assertEquals("Wrong expected vacations days number!", expectedVacationDays, sickDaysAndVacationsPage.getVacationDays());
+        assertEquals("Wrong expected vacations days number!", expectedVacationDays, vacationsDays.getVacationDays());
 
     }
 
@@ -51,23 +61,24 @@ public class VacationsTest extends BaseTest {
     public void testChecksThatNumberOfVacationsInFutureChanged() {
         // Test data
         String login = "imy";
-        String password = "***";
-        int expectedVacationDays = 4;
+        String password = "5IJzWNRz";
+        int expectedVacationDays = 7;
 
         // Test steps
         LoginPage loginPage = new LoginPage();
         loginPage.inputLogin(login);
         loginPage.inputPassword(password);
         MainPage mainPage = loginPage.clickSubmit();
-        SickDaysAndVacationsPage vacationsDays;
-        vacationsDays = mainPage.clickSickDaysAndVacations();
+        mainPage.navigateToPage("Sick Days & Vacations");
+        SickDaysAndVacationsPage vacationsDays = new SickDaysAndVacationsPage();
+        // vacationsDays =
         vacationsDays.clickOnCalendar();
         vacationsDays.selectFutureDay();
         vacationsDays.clickShowButton();
 
-        assert(SickDaysAndVacationsPage.getVacationDays() != expectedVacationDays);
+        assert (SickDaysAndVacationsPage.getVacationDays() != expectedVacationDays);
     }
 
 
-
 }
+

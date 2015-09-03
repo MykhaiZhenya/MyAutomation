@@ -25,11 +25,11 @@ public class SickDaysAndVacationsPage extends BasePage {
     }
 
     public static int getVacationDays() {
-        return Integer.parseInt(String.valueOf(Locators.CURRENT_VACATIONS));
+        return Integer.parseInt($(Locators.CURRENT_VACATIONS).getText());
     }
 
     interface Locators {
-        By CURRENT_VACATIONS = By.xpath("//table[contains(@class, 'employeeData')]/tbody/tr[11]/td[5]");
+        By CURRENT_VACATIONS = By.xpath("//table[contains(@class, 'employeeData')]/tbody/tr[15]/td[3]");
         By CALENDAR = By.cssSelector("#f-calendar-trigger-2 > img[alt=\"Calendar\"]");
         By FUTURE_DAY = By.xpath("//div[3]/table/tbody/tr[5]/td[6]");
         By SHOW = By.xpath("//input[@value='Show']");

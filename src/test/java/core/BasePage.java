@@ -4,6 +4,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static java.lang.Thread.sleep;
+
 /**
  * @author imy@ciklum.com
  */
@@ -11,6 +16,10 @@ public class BasePage {
 
     public static WebElement $(By locator) {
         return DriverManager.getDriver().findElement(locator);
+    }
+
+    public static List<WebElement> $$(By locator) {
+        return DriverManager.getDriver().findElements(locator);
     }
 
     public static void clickOn(By locator) {
@@ -34,7 +43,7 @@ public class BasePage {
     public static void waitPageLoaded(By locator, int timeout, String assertionMessage) {
         int counter = 0;
         boolean displayed = false;
-        while (counter != timeout && displayed != true) {
+        while (counter != timeout && displayed == false) {
             try {
                 displayed = $(locator).isDisplayed();
             } catch (Exception e) {
@@ -43,7 +52,7 @@ public class BasePage {
             }
         }
         if (!displayed) {
-            throw new AssertionError("'" + assertionMessage + "' page object was loaded in " + timeout + " seconds!");
+            throw new AssertionError("'" + assertionMessage + "' page object was loaded in " + String.valueOf(timeout) + " seconds!");
         }
     }
 }

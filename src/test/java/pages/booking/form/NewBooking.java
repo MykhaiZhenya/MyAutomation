@@ -12,6 +12,10 @@ import pages.booking.elements.Item;
  */
 public class NewBooking extends BasePage {
 
+    public NewBooking () {
+        waitPageLoaded();
+    }
+
     public Item selectInBookItem() {
 
         clickOn(Locators.ITEM);

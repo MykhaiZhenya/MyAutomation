@@ -2,6 +2,8 @@ package core;
 
 import org.openqa.selenium.WebDriver;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * @author imy@ciklum.com
  */
@@ -18,9 +20,12 @@ public class BaseTest {
         if (driver != null) {
             driver.quit();
         }
-    }
+
+            }
 
     public void openPage(String url) {
         DriverManager.getDriver().get(url);
+
+
     }
 }
